@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content  %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                <div class="card card-signin my-5">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Sign In</h5>
+                        <form class="form-signin" action="{{ url_for('auth.login') }}">
+                            <div class="form-label-group">
+                                <label for="name">Email address</label>
+                                <input type="text" id="name" name="name" class="form-control"
+                                       placeholder="Username" required autofocus>
+                            </div>
+                            <div class="form-label-group">
+                                <label for="password">Password</label>
+                                <input type="password" id="password" name="password" class="form-control"
+                                       placeholder="Password" required>
+                            </div>
+                            <button class="btn btn-lg btn-light btn-block text-uppercase mt-4" type="submit">Sign in</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $('#body').addClass('bg-light');
+        });
+    </script>
+{% endblock %}

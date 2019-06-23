@@ -1,0 +1,56 @@
+{% extends 'admin.html' %}
+{% block panel %}
+
+    <script src="{{ url_for('static', filename='js/Chart.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/actions_charts.js') }}"></script>
+
+    <div class="container-fluid">
+        <div class="row my-2">
+            <div class="col-12">
+                <h3>Data charts</h3>
+            </div>
+        </div>
+        <div class="row my-2">
+            <div class="col-lg-3 col-12">
+                <div class="col-12 mb-2">
+                    <p class="text-primary m-0">Last date: {{ measurement.date }} </p>
+                    <p class="text-primary m-0">Sensor: {{ measurement.sensor_id }} </p>
+                    <p class="text-primary m-0">Temperature: {{ measurement.temperature }} </p>
+                    <p class="text-primary m-0">Humidity: {{ measurement.humidity }} </p>
+                </div>
+                <h5>Choose date:</h5>
+                <form id="formShow">
+                    <div class="form-group">
+                        <label>
+                            <span class="m-2">Begin: </span>
+                            <input name="dtStart" id="dtStart" type="date" class="form-control">
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <span  class="m-2">End: </span>
+                            <input name="dtEnd" id="dtEnd" type="date" class="form-control">
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="sensor">Sensor: </label>
+                        <select id="sensor" class="form-control">
+                            {% for sensor in sensors %}
+                                <option >{{ sensor }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group float-right">
+                        <button type="submit" id="btnShow" class="btn btn-light">Show</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-9 col-12" id="divChart">
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+

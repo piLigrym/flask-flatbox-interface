@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content  %}
+    <aside class="col-12 col-md-1 p-0 bg-light">
+        {% include 'nav.html' %}
+    </aside>
+    <main class="col bg-faded py-3" style="overflow-y: scroll; height: 100vh;">
+        {% block panel %}
+        {% endblock %}
+    </main>
+{% endblock %}
+
+

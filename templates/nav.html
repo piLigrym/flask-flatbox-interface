@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand navbar-dark bg-light flex-md-column flex-row align-items-start py-2">
+    <div class="collapse navbar-collapse">
+        <ul class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
+            <li class="nav-item text-left">
+                <a class="nav-link pl-0 text-nowrap" href="{{ url_for('chart.render_chart') }}">
+                    <span class="font-weight-bold text-dark">FlatBox</span>
+                </a>
+            </li>
+            <li class="nav-item text-center">
+                <a class="nav-link pl-0" href="{{ url_for('chart.render_chart') }}">
+                    <i class="fas fa-chart-bar fa-lg text-dark"></i>
+                </a>
+            </li>
+            <li class="nav-item text-center">
+                <a class="nav-link pl-0" href="{{ url_for('recommendation.render_recommendation') }}">
+                    <i class="fas fa-book fa-lg text-dark"></i>
+                </a>
+            </li>
+               <li class="nav-item text-center">
+                <a class="nav-link pl-0" href="{{ url_for('auth.logout') }}">
+                    <i class="fa fa-sign-out-alt fa-lg text-dark"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
