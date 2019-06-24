@@ -1,4 +1,6 @@
-from app import db
+from utils import Database
+
+db = Database().get_instance()
 
 
 class Climate(db.Model):

@@ -1,9 +1,9 @@
 from flask import Flask
 from flask_login import LoginManager
-from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
-from utils.config import ParserConfig
+from utils import ParserConfig
+from utils import Database
 
 import os
 
@@ -17,22 +17,23 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://{user}:{password}@{host}:{port}
     **config['database'])
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
-db = SQLAlchemy()
-db.init_app(app)
-migrate = Migrate(app, db)
+# init database singleton
+db = Database()
+db.get_instance().init_app(app)
+migrate = Migrate(app, db.get_instance())
 
-from bp_template.chart_page import chart
-from bp_template.login_page import login
-from bp_template.recommendation_page import recommendation
-from bp_template.index_page import index
+from bp_template import chart
+from bp_template import login
+from bp_template import recommendation
+from bp_template import index
 
 app.register_blueprint(chart)
 app.register_blueprint(login)
 app.register_blueprint(recommendation)
 app.register_blueprint(index)
 
-from bp_rest.auth import auth
-from bp_rest.climate import climate
+from bp_rest import auth
+from bp_rest import climate
 app.register_blueprint(auth)
 app.register_blueprint(climate, url_prefix='/climate')
 
@@ -41,9 +42,9 @@ login_manager = LoginManager()
 login_manager.login_view = 'login.render_login'
 login_manager.init_app(app)
 
-from models.user import User
-from models.hub import Hub
-from models.climate import Climate
+from models import User
+from models import Hub
+from models import Climate
 
 
 @login_manager.user_loader

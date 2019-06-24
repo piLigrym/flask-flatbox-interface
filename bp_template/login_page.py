@@ -4,7 +4,7 @@ from flask_login import login_user, current_user
 
 from jinja2 import TemplateNotFound
 
-from models.user import User
+from models import User
 
 login = Blueprint('login', __name__, template_folder='templates', static_folder='static')
 
